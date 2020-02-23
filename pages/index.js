@@ -1,28 +1,24 @@
-import FlexDiv from '../components/FlexDiv'
+import GridDiv from '../components/GridDiv'
 import FlexItem from '../components/FlexItem'
 import Video from '../components/Video'
 import Wrapper from '../components/Wrapper'
 import fetch from 'isomorphic-unfetch'
 import CenteredH3 from '../components/CenteredH3'
+import Multiview from '../components/Multiview'
 
 const Index = (props) => {
     return (
         <Wrapper>
-            <FlexDiv>
             {
                 (!props.data.message) ? (
-                    props.data.links.map(value => {
-                        return (
-                            <FlexItem>
-                                <Video linkToVideo={value}></Video>
-                            </FlexItem>
-                        )
-                    })
+                    <GridDiv>
+                        <Multiview links={props.data.links}></Multiview>
+                    </GridDiv>
                 ) : (
-                        <CenteredH3>Oh noooo! There are no streams currently!</CenteredH3>
-                    )
+                    <CenteredH3>Oh noooo! There are no streams currently!</CenteredH3>
+                )
             }
-            </FlexDiv>
+
         </Wrapper>
     )
 }

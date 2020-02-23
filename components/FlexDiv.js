@@ -6,6 +6,7 @@ const StyledFlexDiv = styled.div`
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
+    align-items: stretch;
 `
 
 const FlexDiv = ({ children }) => (
