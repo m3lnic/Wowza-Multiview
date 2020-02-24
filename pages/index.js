@@ -30,7 +30,7 @@ const Index = () => {
                 (videos.Message || videos === []) ? (
                     <ErrorMessage>Oh noooo</ErrorMessage>
                 ) : (
-                        <p>{JSON.stringify(videos)}</p>
+                        <Multiview data={videos}></Multiview>
                     )
             }
         </Wrapper>

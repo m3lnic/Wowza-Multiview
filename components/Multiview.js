@@ -1,13 +1,13 @@
 import Video from './Video'
 
-const Multiview = ({ links }) => {
+const Multiview = ({ data }) => {
     if (links === undefined)
         return null;
 
     return (
-        links.map((value) => (
-            <Video linkToVideo={value}></Video>
-        ))
+        data.Streams.map((streamInfo) => {
+            
+        })
     )
 }
 
