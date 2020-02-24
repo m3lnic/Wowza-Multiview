@@ -8,6 +8,7 @@ const StyledWrapper = styled.div`
     left: 0;
     top: 0;
     position: absolute;
+    text-align: center;
 `
 
 const Wrapper = ({ children }) => (

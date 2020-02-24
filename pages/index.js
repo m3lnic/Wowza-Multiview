@@ -1,40 +1,40 @@
 import GridDiv from '../components/GridDiv'
-import FlexItem from '../components/FlexItem'
-import Video from '../components/Video'
 import Wrapper from '../components/Wrapper'
 import fetch from 'isomorphic-unfetch'
-import CenteredH3 from '../components/CenteredH3'
+import ErrorMessage from '../components/ErrorMessage'
 import Multiview from '../components/Multiview'
+import React, { componentDidMount, useState, useEffect } from 'react'
 
-const Index = (props) => {
+const Index = () => {
+    const [videos, setVideos] = useState([])
+
+    const fetchVideos = async () => {
+        const response = await fetch('http://localhost:3001/streamfiles/')
+
+        const data = await response.json()
+
+        setVideos(data)
+        console.log(`${new Date()} Fetch Videos: ${JSON.stringify(data)}`)
+
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            fetchVideos(videos)
+        }, 1000)
+    }, [videos])
+
     return (
         <Wrapper>
             {
-                (!props.data.message) ? (
-                    <GridDiv>
-                        <Multiview links={props.data.links}></Multiview>
-                    </GridDiv>
+                (videos.Message || videos === []) ? (
+                    <ErrorMessage>Oh noooo</ErrorMessage>
                 ) : (
-                    <CenteredH3>Oh noooo! There are no streams currently!</CenteredH3>
-                )
+                        <p>{JSON.stringify(videos)}</p>
+                    )
             }
-
         </Wrapper>
     )
-}
-
-Index.getInitialProps = async function () {
-    const response = await fetch('http://localhost:3001/streamfiles/')
-
-    console.log(response)
-
-    const data = await response.json()
-
-    console.log(data)
-
-    return {
-        data
-    }
 }
 
 export default Index

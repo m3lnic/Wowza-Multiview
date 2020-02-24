@@ -1,5 +1,3 @@
-import FlexItem from './FlexItem'
-import CenteredH3 from './CenteredH3'
 import ReactPlayer from 'react-player'
 import styled from 'styled-components'
 
